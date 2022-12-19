@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add new order</h1>
+    <p>
+        <form method="post" action="{{ url_for('select_client') }}" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                Choose client telephone:
+                {{ form.client_telephone.csrf_token }}<br>
+                {{ form.client_telephone }}<br>
+                {% for error in form.client_telephone.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </p>
+ {% endblock %}

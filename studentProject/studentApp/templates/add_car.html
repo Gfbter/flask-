@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add new Car</h1>
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}<br>
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.car_number.label }}<br>
+            {{ form.car_number(size=32) }}<br>
+            {% for error in form.car_number.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.brand.label }}<br>
+            {{ form.brand(size=15) }}<br>
+            {% for error in form.brand.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.vin_code.label }}<br>
+            {{ form.vin_code(size=17) }}<br>
+            {% for error in form.vin_code.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.release_date.label }}<br>
+            {{ form.release_date(size=17) }}<br>
+            {% for error in form.release_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(cols=50, rows=4) }}<br>
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+ {% endblock %}

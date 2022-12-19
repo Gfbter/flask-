@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add new Ordering service</h1>
+    <form method="post" action="" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            Choose service name:
+            {{ form.service_name.csrf_token }}<br>
+            {{ form.service_name }}<br>
+            {% for error in form.service_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.quantity.csrf_token }}<br>
+            {{ form.quantity.label() }}<br>
+            {{ form.quantity }}<br>
+            {% for error in form.quantity.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.price.csrf_token }}<br>
+            {{ form.price.label() }}<br>
+            {{ form.price }}<br>
+            {% for error in form.price.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+ {% endblock %}

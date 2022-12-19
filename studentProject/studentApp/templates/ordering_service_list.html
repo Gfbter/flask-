@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <form action="{{ url_for('ordering_service_search', order_id=order_id) }}" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.name(size=32) }}<br>
+            {{ form.submit() }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </form>
+    </div>
+    <hr>
+    <div>
+        <table border="1">
+            <tr>
+                <th>order id</th>
+                <th>service name</th>
+                <th>quantity</th>
+                <th>price</th>
+                {% if flag %}
+                <th>edit</th>
+                <th>delete</th>
+                {% endif %}
+            </tr>
+            {% for ordering_service in ordering_services %}
+                    <tr>
+                        <td>{{ order_id }}</td>
+                        <td>{{ ordering_service.service_name }}</td>
+                        <td>{{ ordering_service.quantity }}</td>
+                        <td>{{ ordering_service.price }}</td>
+                        {% if flag %}
+                        <td><a href="{{ url_for('edit_ordering_service', id=ordering_service.id, order_id=order_id) }}">edit</a></td>
+                        <td><a href="{{ url_for('delete_ordering_service', id=ordering_service.id, order_id=order_id) }}">delete</a></td>
+                        {% endif %}
+                    </tr>
+            {% endfor %}
+        </table>
+        {% if flag %}
+        <a href="{{ url_for('add_ordering_service', order_id=order_id) }}">Add new</a>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!-- {% extends "base.html" %}
+
+{% block content %}
+    <h1>Add new order</h1>
+    <a href="{{ url_for('select_client') }}">Back to select client</a>
+    <form method="post" action="" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            Choose start date:
+            {{ form.date.csrf_token }}<br>
+            {{ form.date(value=order.date) }}<br>
+            {% for error in form.date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            Choose end date:
+            {{ form.expiration_date.csrf_token }}<br>
+            {{ form.expiration_date(value=order.expiration_date) }}<br>
+            {% for error in form.expiration_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+ {% endblock %} -->

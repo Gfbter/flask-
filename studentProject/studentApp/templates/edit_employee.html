@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Edit</h1>
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32, value=employee.name) }}<br>
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.telephone.label }}<br>
+            {{ form.telephone(size=11, value=employee.telephone) }}<br>
+            {% for error in form.telephone.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.profession.label }}<br>
+            {{ form.profession(size=32, value=employee.profession) }}<br>
+            {% for error in form.profession.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(cols=50, rows=4, value=employee.description) }}<br>
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+ {% endblock %}

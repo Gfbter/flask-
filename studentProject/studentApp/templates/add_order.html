@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add new order</h1>
+    <a href="{{ url_for('select_client') }}">Back to select client</a>
+    <form method="post" action="" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            Choose client car:
+            {{ form.client_car.csrf_token }}<br>
+            {{ form.client_car }}<br>
+            {% for error in form.client_car.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            Choose employee:
+            {{ form.employee.csrf_token }}<br>
+            {{ form.employee }}<br>
+            {% for error in form.employee.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            Choose area:
+            {{ form.area.csrf_token }}<br>
+            {{ form.area }}<br>
+            {% for error in form.area.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.date.csrf_token }}<br>
+            {{ form.date.label() }}<br>
+            {{ form.date }}<br>
+            {% for error in form.date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.expiration_date.csrf_token }}<br>
+            {{ form.expiration_date.label() }}<br>
+            {{ form.expiration_date }}<br>
+            {% for error in form.expiration_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+ {% endblock %}

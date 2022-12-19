@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <form action="{{ url_for('client_search') }}" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.name(size=32) }}<br>   
+            {% for filter in form.filters %}
+                {{ filter }}
+            {% endfor %}
+            {{ form.submit() }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </form>
+    </div>
+    <hr>
+    <div>
+        <table border="1">
+            <tr>
+                <th>name</th>
+                <th>telephone</th>
+                <th>profession</th>
+                <th>description</th>
+                {% if flag %}
+                <th>edit</th>
+                <th>delete</th>
+                {% endif %}
+            </tr>
+                {% for employee in employees %}
+                    <tr>
+                        <td>{{ employee.name }}</td>
+                        <td>{{ employee.telephone }}</td>
+                        <td>{{ employee.profession }}</td>
+                        {% if employee.description  %}    
+                        <td>{{ employee.description }}</td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                        {% if flag %}
+                        <td><a href="{{ url_for('edit_employee', id=employee.id) }}">edit</a></td>
+                        <td><a href="{{ url_for('delete_employee', id=employee.id) }}">delete</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                <tr></tr>
+        </table>
+        {% if flag %}
+        <a href="{{ url_for('add_employee') }}">Add new</a>
+        {% endif %}
+    </div>
+{% endblock %}

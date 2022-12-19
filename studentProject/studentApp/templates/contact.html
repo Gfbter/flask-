@@ -1,0 +1,38 @@
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('a#test').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/background_process_test',
+                '54321',
+                function(data) {
+                    console.log(data);
+            });
+            return false;
+          });
+        });
+</script> -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- //button
+<div class='container'>
+    <h3>Test</h3>
+        <form>
+            <a href=# id=test><button class='btn btn-default'>Test</button></a>
+        </form>
+
+</div> -->
+    <h1>{{ title }}</h1>
+    <p>
+        <form method="post" action="{{ url_for('index') }}" novalidate>            
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="submit" name="button" value="Ok2" >
+            <input type="submit" name="button" value="Ok" >
+            <input type="button" name="button" value="Ok3" onclick="{{ url_for('index') }}">
+            <!-- onclick="index()" -->
+        </form>
+    </p>
+{% endblock %}
+

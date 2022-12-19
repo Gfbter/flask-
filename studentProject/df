@@ -1,0 +1,10 @@
+ id |         name          |  telephone  | birth_date | description 
+----+-----------------------+-------------+------------+-------------
+  5 | Henry Ford            | 79609467758 | 3242-09-01 | 
+  7 | Ferdinand Porsche     | 79609467780 | 3123-03-04 | 
+  8 | Ferruccio Lamborghini | 79609467777 | 3123-03-04 | 
+  9 | Herny For             | 79609467790 | 3123-12-31 | 
+ 11 | Henry fo              | 79609467795 | 1312-12-31 | 
+  6 | John Deer             | 79609467778 | 1243-12-31 | adsfasdf
+(6 rows)
+

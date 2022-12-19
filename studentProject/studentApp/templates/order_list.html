@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <form action="{{ url_for('order_search') }}" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.name(size=32) }}<br>
+            {{ form.submit() }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </form>
+    </div>
+    <hr>
+    <div>
+        <table border="1">
+            <tr>
+                <th>client name</th>
+                <th>car number</th>
+                <th>employee name</th>
+                <th>area name</th>
+                <th>date</th>
+                <th>expiration date</th>
+                {% if flag %}
+                <th>edit</th>
+                <th>delete</th>
+                {% endif %}
+            </tr>
+            {% for order in orders %}
+                    <tr>
+                        <td><a href="{{ url_for('ordering_service', order_id=order.id) }}">{{ order.client_name }}</a></td>
+                        <td>{{ order.car_number }}</td>
+                        <td>{{ order.employee_name }}</td>
+                        <td>{{ order.area_name }}</td>
+                        <td>{{ order.date }}</td>
+                        <td>{{ order.expiration_date }}</td>
+                        {% if flag %}
+                        <td><a href="{{ url_for('edit_order', id=order.id) }}">edit</a></td>
+                        <td><a href="{{ url_for('delete_order', id=order.id) }}">delete</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+        </table>
+        {% if flag %}
+        <a href="{{ url_for('select_client') }}">Add new</a>
+        {% endif %}
+    </div>
+{% endblock %}
